@@ -104,3 +104,23 @@ Element remove_from_end(List_ptr pList){
   return removed_element;
 }
 
+Element remove_at(List_ptr pList, int position){
+  if (position < 0 | position >= pList->length) return NULL;
+  if (position == 0 ) return remove_from_start(pList);
+  if (position == pList->length - 1 ) return remove_from_end(pList);
+  
+  Node_ptr p_walk = pList->first;
+  for (int count = 0; count < position - 1; count++)
+  {
+    p_walk = p_walk->next;
+  }
+  Node_ptr node_to_remove = p_walk->next;
+  p_walk->next = node_to_remove->next;
+  pList->length--;
+
+  Element removed_element = node_to_remove->element;
+
+  free(node_to_remove);
+  return removed_element;
+}
+
