@@ -31,12 +31,12 @@ int main()
 {
   List_ptr pList = create_list();
   Status status;
-  add_to_list(pList, (Element) 1);
+  add_to_list(pList, (Element) 2);
   add_to_start(pList, (Element) 2);
   insert_at(pList, (Element) 3, 0);
   insert_at(pList, (Element) 4, 0);
 
-  display_number_linked_list(reverse(pList));
+  display_number_linked_list(remove_all_occurrences(pList, (Element) 2, &is_equal));
 
   display_number_linked_list(pList);
   return 0;

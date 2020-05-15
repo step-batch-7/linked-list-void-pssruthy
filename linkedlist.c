@@ -137,6 +137,30 @@ Element remove_first_occurrence(List_ptr pList, Element element, Matcher matcher
   }
   return NULL;
 }
+
+List_ptr remove_all_occurrences(List_ptr pList, Element element, Matcher matcher){
+  List_ptr removed_list = create_list();
+  Node_ptr p_walk = pList->first;
+  Element removed_element;
+  int position = 0;
+
+  while (p_walk != NULL)
+  {
+    if ((*matcher)(element, p_walk->element) == Success)
+      {
+        removed_element = p_walk->element;
+        p_walk = p_walk->next;
+        add_to_list(removed_list, removed_element);
+        remove_at(pList, position);
+      }
+    else
+      {
+        position++;
+        p_walk = p_walk->next;
+      }
+  }
+  return removed_list;
+}
  
 Status add_unique(List_ptr pList, Element element, Matcher matcher){
   Node_ptr p_walk = pList->first;
@@ -201,8 +225,6 @@ List_ptr reverse(List_ptr pList){
   }
   return reversed_list;
 }
-
-
 
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;
