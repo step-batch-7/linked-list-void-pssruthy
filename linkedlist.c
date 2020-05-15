@@ -54,3 +54,19 @@ Status add_to_start(List_ptr pList, Element element){
   return Success;
 }
 
+Status insert_at(List_ptr pList, Element element, int position){
+  if(position < 0 | position > pList->length) return Failure;
+  if (position == 0) return add_to_start(pList, element);
+  if (position == pList->length) return add_to_list(pList, element);
+
+  Node_ptr new_node = create_Node(element);
+  Node_ptr previous_node = pList->first;
+  for (int count = 1; count < position; count++)
+  {
+   previous_node = previous_node->next;
+  }
+  new_node->next = previous_node->next;
+  previous_node->next = new_node;
+  pList->length++;
+  return Success;
+}
