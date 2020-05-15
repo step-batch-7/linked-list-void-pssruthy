@@ -124,3 +124,17 @@ Element remove_at(List_ptr pList, int position){
   return removed_element;
 }
 
+Element remove_first_occurrence(List_ptr pList, Element element, Matcher matcher){
+  Node_ptr p_walk = pList->first;
+  int position = 0;
+  while (p_walk != NULL)
+  {
+    if((*matcher)(element, p_walk->element) == Success){
+      return remove_at(pList, position);
+    }
+    position++;
+    p_walk = p_walk->next;
+  }
+  return NULL;
+}
+ 

@@ -1,5 +1,9 @@
 #include "linkedlist.h"
 
+Status is_equal_void(Element element_1, Element element_2){
+  return (int) element_1 == (int) element_2 ? Success : Failure;
+}
+
 int main()
 {
   List_ptr pList = create_list();
@@ -15,16 +19,11 @@ int main()
   element = (Element) 30;
   insert_at(pList, element, 0);
 
-  removed_element = remove_from_start(pList);
-  if(removed_element == NULL) printf("List is empty\n");
-  else printf("Removed the first element %d\n", (int) removed_element);
+  element = (Element) 40;
+  insert_at(pList, element, 0);
 
-  removed_element = remove_from_end(pList);
-  if(removed_element == NULL) printf("List is empty\n");
-  else printf("Removed the last element %d\n", (int) removed_element);
-
-  removed_element = remove_at(pList, 0);
-  if(removed_element == NULL) printf("invalid position \n");
+  removed_element = remove_first_occurrence(pList, (Element) 30, &is_equal_void);
+  if(removed_element == NULL) printf("Element is not present\n");
   else printf("Removed element %d\n", (int) removed_element);
 
   display_number_linked_list(pList);
