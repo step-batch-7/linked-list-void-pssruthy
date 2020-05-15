@@ -13,9 +13,9 @@ int main()
   insert_at(pList, (Element) 30, 0);
   insert_at(pList, (Element) 40, 0);
 
-  status = add_unique(pList, (Element) 40, &is_equal_void);
-  if(status == Success) printf("Added successfully\n");
-  else printf("Element already exists\n");
+  status = clear_list(pList);
+  if(status == Success) printf("DONE\n");
+  else printf("NOT DONE\n");
 
   display_number_linked_list(pList);
   return 0;

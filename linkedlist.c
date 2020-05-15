@@ -147,3 +147,14 @@ Status add_unique(List_ptr pList, Element element, Matcher matcher){
   }
   return add_to_list(pList, element);
 }
+
+Status clear_list(List_ptr pList){
+  Node_ptr p_walk = pList->first;
+  while (p_walk != NULL)
+  {
+    remove_from_start(pList);
+    p_walk = p_walk->next;
+  }
+  return Success;
+}
+
