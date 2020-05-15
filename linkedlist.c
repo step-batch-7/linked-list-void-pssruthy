@@ -138,3 +138,12 @@ Element remove_first_occurrence(List_ptr pList, Element element, Matcher matcher
   return NULL;
 }
  
+Status add_unique(List_ptr pList, Element element, Matcher matcher){
+  Node_ptr p_walk = pList->first;
+  for (int count = 0; count < pList->length; count++)
+  {
+    if((*matcher)(element, p_walk->element) == Success) return Failure;  
+    p_walk = p_walk->next;
+  }
+  return add_to_list(pList, element);
+}
