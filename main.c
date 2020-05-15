@@ -18,6 +18,10 @@ int main()
   if(removed_element == NULL) printf("List is empty\n");
   else printf("Removed the first element %d\n", (int) removed_element);
 
+  removed_element = remove_from_end(pList);
+  if(removed_element == NULL) printf("List is empty\n");
+  else printf("Removed the last element %d\n", (int) removed_element);
+
   display_number_linked_list(pList);
   return 0;
 }

@@ -76,10 +76,31 @@ Element remove_from_start(List_ptr pList){
   if (pList->first == NULL) return NULL;
   if (pList->length == 1) pList->first = pList->last = NULL;
   else pList->first = head->next;
-  
+
   pList->length--;
 
   Element removed_element = head->element;
   free(head);
   return removed_element;
 }
+
+Element remove_from_end(List_ptr pList){
+  Node_ptr last = pList->last;
+  Node_ptr p_walk =  pList->first;
+  if (pList->length == 0) return NULL;
+  if (pList->length == 1) pList->last = pList->first = NULL;
+  else {
+    for (int count = 1; count < pList->length - 1; count++)
+    {
+      p_walk = p_walk->next;
+    }
+    p_walk->next = NULL;  
+    pList->last = p_walk;
+  }
+  Element removed_element = last->element;
+  pList->length--;
+  
+  free(last);
+  return removed_element;
+}
+
