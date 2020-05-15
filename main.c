@@ -1,7 +1,13 @@
 #include "linkedlist.h"
 
-Status is_equal_void(Element element_1, Element element_2){
+Status is_equal(Element element_1, Element element_2){
   return (int) element_1 == (int) element_2 ? Success : Failure;
+}
+
+Element square(Element element){
+  long int number = (long int )element;
+  Element result = (Element)(number * number);
+  return result;
 }
 
 int main()
@@ -13,9 +19,7 @@ int main()
   insert_at(pList, (Element) 30, 0);
   insert_at(pList, (Element) 40, 0);
 
-  status = clear_list(pList);
-  if(status == Success) printf("DONE\n");
-  else printf("NOT DONE\n");
+  display_number_linked_list(map(pList, &square));
 
   display_number_linked_list(pList);
   return 0;

@@ -148,6 +148,20 @@ Status add_unique(List_ptr pList, Element element, Matcher matcher){
   return add_to_list(pList, element);
 }
 
+List_ptr map(List_ptr pList, Mapper mapper){
+  List_ptr mapped_list = create_list();
+  Node_ptr p_walk = pList->first;
+
+  for (int index = 0; index < pList->length; index++)
+  {
+    add_to_list(mapped_list, (*mapper)(p_walk->element));
+    p_walk = p_walk->next;
+  }
+  
+  return mapped_list;
+}
+
+
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;
   while (p_walk != NULL)
