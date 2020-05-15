@@ -70,3 +70,16 @@ Status insert_at(List_ptr pList, Element element, int position){
   pList->length++;
   return Success;
 }
+
+Element remove_from_start(List_ptr pList){
+  Node_ptr head = pList->first;
+  if (pList->first == NULL) return NULL;
+  if (pList->length == 1) pList->first = pList->last = NULL;
+  else pList->first = head->next;
+  
+  pList->length--;
+
+  Element removed_element = head->element;
+  free(head);
+  return removed_element;
+}
