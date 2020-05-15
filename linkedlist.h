@@ -41,11 +41,14 @@ typedef Element (*Reducer)(Element, Element);
 typedef void (*ElementProcessor)(Element);
 typedef Status (*Matcher)(Element, Element);
 
+Node_ptr create_Node(Element);
 List_ptr create_list(void);
 
 Status add_to_list(List_ptr, Element);
 Status add_to_start(List_ptr, Element);
 Status insert_at(List_ptr, Element element, int position);
+
+void display_number_linked_list(List_ptr);
 
 List_ptr reverse(List_ptr);
 
