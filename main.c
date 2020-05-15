@@ -7,6 +7,9 @@ int main()
   element = (Element) 10;
 
   add_to_list(pList, element);
+  element = (Element) 20;
+  add_to_start(pList, element);
+
   display_number_linked_list(pList);
   return 0;
 }

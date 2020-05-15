@@ -40,3 +40,17 @@ Status add_to_list(List_ptr pList, Element element){
   return Success;
 }
 
+Status add_to_start(List_ptr pList, Element element){
+  Node_ptr new_node = create_Node(element);
+  if(pList->first == NULL){
+    pList->first = new_node;
+    pList->last = new_node;
+  }else
+  {
+    new_node->next = pList->first;
+    pList->first = new_node;
+  }
+  pList->length++;
+  return Success;
+}
+
