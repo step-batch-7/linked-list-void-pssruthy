@@ -183,6 +183,15 @@ Element reduce(List_ptr pList, Element init, Reducer reducer){
   return context;
 }
 
+void forEach(List_ptr pList, ElementProcessor processor){
+  Node_ptr p_walk = pList->first;
+  while(p_walk != NULL){
+    (*processor)(p_walk->element);
+    p_walk = p_walk->next;
+  }
+}
+
+
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;
   while (p_walk != NULL)

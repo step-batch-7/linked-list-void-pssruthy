@@ -23,6 +23,10 @@ Element add(Element element1, Element element2 ){
   return result;
 }
 
+void print_square(Element element){
+  printf("%d\n",(int) square(element));
+}
+
 int main()
 {
   List_ptr pList = create_list();
@@ -32,7 +36,7 @@ int main()
   insert_at(pList, (Element) 3, 0);
   insert_at(pList, (Element) 4, 0);
 
-  printf("%d\n",(int) reduce(pList, (Element) 10,&add));
+  forEach(pList, &print_square); 
 
   display_number_linked_list(pList);
   return 0;
