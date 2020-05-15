@@ -191,6 +191,18 @@ void forEach(List_ptr pList, ElementProcessor processor){
   }
 }
 
+List_ptr reverse(List_ptr pList){
+  List_ptr reversed_list = create_list();
+  Node_ptr p_walk = pList->first;
+  while (p_walk != NULL)
+  {
+    add_to_start(reversed_list, p_walk->element);
+    p_walk = p_walk->next;
+  }
+  return reversed_list;
+}
+
+
 
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;

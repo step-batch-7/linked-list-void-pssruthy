@@ -36,7 +36,7 @@ int main()
   insert_at(pList, (Element) 3, 0);
   insert_at(pList, (Element) 4, 0);
 
-  forEach(pList, &print_square); 
+  display_number_linked_list(reverse(pList));
 
   display_number_linked_list(pList);
   return 0;
