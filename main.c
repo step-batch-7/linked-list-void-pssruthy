@@ -16,6 +16,13 @@ Status is_even(Element object){
   return Failure;
 }
 
+Element add(Element element1, Element element2 ){
+  long int number1 = (long int) element1;
+  long int number2 = (long int) element2;
+  Element result = (Element)(number1 + number2);
+  return result;
+}
+
 int main()
 {
   List_ptr pList = create_list();
@@ -25,7 +32,7 @@ int main()
   insert_at(pList, (Element) 3, 0);
   insert_at(pList, (Element) 4, 0);
 
-  display_number_linked_list(filter(pList, &is_even));
+  printf("%d\n",(int) reduce(pList, (Element) 10,&add));
 
   display_number_linked_list(pList);
   return 0;

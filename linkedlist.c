@@ -173,6 +173,16 @@ List_ptr filter(List_ptr pList, Predicate predicate){
   return filtered_list;
 }
 
+Element reduce(List_ptr pList, Element init, Reducer reducer){
+  Element context = init;
+  Node_ptr p_walk = pList->first;
+  while(p_walk != NULL){
+    context =  (*reducer)(p_walk->element, context);
+    p_walk = p_walk->next;
+  }
+  return context;
+}
+
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;
   while (p_walk != NULL)
