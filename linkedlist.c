@@ -157,10 +157,21 @@ List_ptr map(List_ptr pList, Mapper mapper){
     add_to_list(mapped_list, (*mapper)(p_walk->element));
     p_walk = p_walk->next;
   }
-  
   return mapped_list;
 }
 
+List_ptr filter(List_ptr pList, Predicate predicate){
+  Element filtered_list = create_list();
+  Node_ptr p_walk = pList->first;
+  while(p_walk != NULL)
+  {
+    if((*predicate)(p_walk->element) == Success){
+      add_to_list(filtered_list, p_walk->element);
+    }
+    p_walk = p_walk->next;
+  }
+  return filtered_list;
+}
 
 Status clear_list(List_ptr pList){
   Node_ptr p_walk = pList->first;
